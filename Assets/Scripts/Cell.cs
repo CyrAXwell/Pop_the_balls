@@ -7,33 +7,29 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 {
     public event System.Action<Cell> Click;
     
-    [SerializeField] private int size;
-    [SerializeField] private Image background;
-    [SerializeField] private GameObject backgroundPref;
-    [SerializeField] private GameObject redBall;
-    [SerializeField] private GameObject blueBall;
-    [SerializeField] private GameObject greenBall;
-    [SerializeField] private GameObject yellowBall;
-    [SerializeField] private GameObject purpleBall;
+    [SerializeField] private int _size = 80;
+    [SerializeField] private Image _background;
+    [SerializeField] private GameObject _backgroundPref;
+    [SerializeField] private GameObject _redBall;
+    [SerializeField] private GameObject _blueBall;
+    [SerializeField] private GameObject _greenBall;
+    [SerializeField] private GameObject _yellowBall;
+    [SerializeField] private GameObject _purpleBall;
+    [SerializeField] private GameObject _redPopEffect;
+    [SerializeField] private GameObject _bluePopEffect;
+    [SerializeField] private GameObject _greenPopEffect;
+    [SerializeField] private GameObject _yellowPopEffect;
+    [SerializeField] private GameObject _purplePopEffect;
 
-    [SerializeField] private GameObject redPopEffect;
-    [SerializeField] private GameObject bluePopEffect;
-    [SerializeField] private GameObject greenPopEffect;
-    [SerializeField] private GameObject yellowPopEffect;
-    [SerializeField] private GameObject purplePopEffect;
+    private Color _backgroundColor;
+    private GameObject _ball;
+    private GameObject _popEffect;
 
     public int PosX { get; private set; }
     public int PosY { get; private set; }   
     public CellColor CellColor { get; private set; } 
     public bool IsInPack { get; private set; }
-    
-    public int Size => size;
-
-    private Color _backgroundColor;
-    private GameObject _ball;
-    private GameObject _popEffect;
-    
-    
+    public int Size => _size;
 
     public void Initialize(int posX, int posY)
     {
@@ -41,23 +37,18 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         PosY = posY;
         CellColor = PutBall();
         DisplayColor();
-        _backgroundColor = background.color; 
+        _backgroundColor = _background.color; 
     }
 
     public void Reset()
     {
         if (_ball != null)
         {
-            Color temp = background.color;
+            Color temp = _background.color;
             temp.a = 0;
-            background.color = temp;
+            _background.color = temp;
             Destroy(_ball);
         }
-
-        
-        //Appear();
-        // CellColor = PutBall();
-        // DisplayColor();
     }
 
     private CellColor PutBall()
@@ -70,45 +61,42 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         switch (CellColor)
         {
             case CellColor.Red:
-                _ball = Instantiate(redBall, transform, false);
-                _popEffect = redPopEffect;
+                _ball = Instantiate(_redBall, transform, false);
+                _popEffect = _redPopEffect;
                 break;
             case CellColor.Blue:
-                _ball = Instantiate(blueBall, transform, false);
-                _popEffect = bluePopEffect;
+                _ball = Instantiate(_blueBall, transform, false);
+                _popEffect = _bluePopEffect;
                 break;
             case CellColor.Green:
-                _ball = Instantiate(greenBall, transform, false);
-                _popEffect = greenPopEffect;
+                _ball = Instantiate(_greenBall, transform, false);
+                _popEffect = _greenPopEffect;
                 break;
             case CellColor.Yellow:
-                _ball = Instantiate(yellowBall, transform, false);
-                _popEffect = yellowPopEffect;
+                _ball = Instantiate(_yellowBall, transform, false);
+                _popEffect = _yellowPopEffect;
                 break;
             case CellColor.Purple:
-                _ball = Instantiate(purpleBall, transform, false);
-                _popEffect = purplePopEffect;
+                _ball = Instantiate(_purpleBall, transform, false);
+                _popEffect = _purplePopEffect;
                 break;
         }
     }
 
     public void DisplayBackground()
     {
-        background.color = _backgroundColor;
+        _background.color = _backgroundColor;
     }
 
     public void SetColor(CellColor color)
     {
         CellColor = color;
-        //background.color = _backgroundColor;
-        //DisplayColor();
     }
 
     public void SetRandomColor()
     {
         CellColor = PutBall();
-        background.color = _backgroundColor;
-        //DisplayColor();
+        _background.color = _backgroundColor;
     }
 
     public void Move(Transform target, Cell to, bool isMoveDown, GameField controller)
@@ -116,16 +104,14 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         GameObject ball = SpawnBall();
         var rt = ball.GetComponent<RectTransform>();
 
-        GameObject cellBackground = Instantiate(backgroundPref, transform, false);
-        //Debug.Log(ball);
+        GameObject cellBackground = Instantiate(_backgroundPref, transform, false);
         
         float duration;
         if (isMoveDown)
-            duration = (gameObject.transform.localPosition.y - target.localPosition.y) / (size * 5f);
+            duration = (gameObject.transform.localPosition.y - target.localPosition.y) / (_size * 5f);
         else
-            duration = (gameObject.transform.localPosition.x - target.localPosition.x) / (size * 3f);
+            duration = (gameObject.transform.localPosition.x - target.localPosition.x) / (_size * 3f);
         
-        //ball.transform.parent = target;
         cellBackground.transform.SetParent(target);
         ball.transform.SetParent(cellBackground.transform);
 
@@ -142,7 +128,6 @@ public class Cell : MonoBehaviour, IPointerClickHandler
             else    
                 controller.CompleteShiftLeft();
         }).OnStart(() => controller.StartTween());
-        //target.localPosition.y - gameObject.transform.localPosition.y
     }
 
     public void Appear(GameField controller, float time)
@@ -179,18 +164,17 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         switch (CellColor)
         {
             case CellColor.Red:
-                return Instantiate(redBall, transform, false);
+                return Instantiate(_redBall, transform, false);
             case CellColor.Blue:
-                return Instantiate(blueBall, transform, false);
+                return Instantiate(_blueBall, transform, false);
             case CellColor.Green:
-                return Instantiate(greenBall, transform, false);
+                return Instantiate(_greenBall, transform, false);
             case CellColor.Yellow:
-                return Instantiate(yellowBall, transform, false);
+                return Instantiate(_yellowBall, transform, false);
             case CellColor.Purple:
-                return Instantiate(purpleBall, transform, false);
+                return Instantiate(_purpleBall, transform, false);
             default:
                 return null;
-
         }
     }
 
@@ -208,9 +192,9 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         
         CellColor = CellColor.Empty;
 
-        Color temp = background.color;
+        Color temp = _background.color;
         temp.a = 0;
-        background.color = temp;  
+        _background.color = temp;  
     }
 
     public void PopEffect(AudioManager audioManager)

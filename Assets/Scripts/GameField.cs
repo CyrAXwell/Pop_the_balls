@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class GameField : MonoBehaviour
 {
-    [SerializeField] private int width;
-    [SerializeField] private int hieght;
-    [SerializeField] private Cell cellPref;
-    [SerializeField] private int spacing;
-    [SerializeField] private AudioManager audioManager;
-    [SerializeField] private HUD hUD;
-
+    [SerializeField] private int _width = 16;
+    [SerializeField] private int _hieght = 9;
+    [SerializeField] private Cell _cellPrefab;
+    [SerializeField] private int _spacing = 6;
+    [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private HUD _hUD;
 
     private RectTransform _rt;
     private List<List<Cell>> _cells = new List<List<Cell>>();
@@ -42,8 +41,8 @@ public class GameField : MonoBehaviour
     public void CreateField()
     {
         _canPop = true;
-        float fieldWidth = width * (cellPref.Size + spacing) + spacing;
-        float fieldHieght = hieght * (cellPref.Size + spacing) + spacing;
+        float fieldWidth = _width * (_cellPrefab.Size + _spacing) + _spacing;
+        float fieldHieght = _hieght * (_cellPrefab.Size + _spacing) + _spacing;
 
         _rt.sizeDelta = new Vector2(fieldWidth, fieldHieght);
 
@@ -52,17 +51,17 @@ public class GameField : MonoBehaviour
 
     private void FillField(float fieldWidth, float fieldHieght)
     {
-        float StartX = -(fieldWidth / 2) + (cellPref.Size / 2) + spacing;
-        float StartY = (fieldHieght / 2) - (cellPref.Size / 2) - spacing;
+        float StartX = -(fieldWidth / 2) + (_cellPrefab.Size / 2) + _spacing;
+        float StartY = (fieldHieght / 2) - (_cellPrefab.Size / 2) - _spacing;
 
-        for (int i = 0; i < hieght; i++)
+        for (int i = 0; i < _hieght; i++)
         {
             _cells.Add(new List<Cell>());
 
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < _width; j++)
             {
-                Cell cell = Instantiate(cellPref, transform, false);
-                cell.transform.localPosition = new Vector2(StartX + j * (cellPref.Size + spacing), StartY - i * (cellPref.Size + spacing));
+                Cell cell = Instantiate(_cellPrefab, transform, false);
+                cell.transform.localPosition = new Vector2(StartX + j * (_cellPrefab.Size + _spacing), StartY - i * (_cellPrefab.Size + _spacing));
                 cell.Initialize(j, i);
                 cell.Click += OnBallClick;
                 _cells[i].Add(cell);
@@ -75,7 +74,7 @@ public class GameField : MonoBehaviour
         if (_canPop)
         {
             _canPop = false;
-            hUD.ResetTransition();
+            _hUD.ResetTransition();
         }
     }
 
@@ -83,9 +82,9 @@ public class GameField : MonoBehaviour
     {
         _playerData.ResetScore();
 
-        for (int i = 0; i < hieght; i++)
+        for (int i = 0; i < _hieght; i++)
         {
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < _width; j++)
             {
                 _cells[i][j].Reset();
             }
@@ -94,9 +93,9 @@ public class GameField : MonoBehaviour
 
     public void AppearBalls()
     {
-        for (int i = 0; i < hieght; i++)
+        for (int i = 0; i < _hieght; i++)
         {
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < _width; j++)
             {
                 StartCoroutine(SetPopWithDelay(0.9f));
                 _cells[i][j].Appear(0.8f);
@@ -131,7 +130,7 @@ public class GameField : MonoBehaviour
                     _sequence.AppendCallback( () =>
                     {
                         ball.PopBall();
-                        ball.PopEffect(audioManager);
+                        ball.PopEffect(_audioManager);
                     });
                     _sequence.AppendInterval(0.1f);
                 }
@@ -144,7 +143,7 @@ public class GameField : MonoBehaviour
             {
                 _canPop = true;
                 cell.ClearPack();
-                audioManager.PlaySFX(audioManager.PopSound);
+                _audioManager.PlaySFX(_audioManager.PopSound);
             }
         }
     }
@@ -187,15 +186,15 @@ public class GameField : MonoBehaviour
         _startTween = 0;
         _completeTween = 0;
         bool isDownMovement = false;
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < _width; i++)
         {
-            for (int j = hieght - 1; j >= 0; j--)
+            for (int j = _hieght - 1; j >= 0; j--)
             {  
-                if (_cells[j][i].CellColor != CellColor.Empty && j < hieght - 1 && _cells[j + 1][i].CellColor == CellColor.Empty)
+                if (_cells[j][i].CellColor != CellColor.Empty && j < _hieght - 1 && _cells[j + 1][i].CellColor == CellColor.Empty)
                 {
                     isDownMovement = true;
                     int k = j + 1;
-                    while(k < hieght && _cells[k][i].CellColor == CellColor.Empty)
+                    while(k < _hieght && _cells[k][i].CellColor == CellColor.Empty)
                         k++;
 
                     _cells[k-1][i].SetColor(_cells[j][i].CellColor);
@@ -251,16 +250,16 @@ public class GameField : MonoBehaviour
         _startTween = 0;
         _completeTween = 0;
         bool isLeftMovement = false;
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < _width; i++)
         {
-            if (i > 0 && _cells[hieght - 1][i].CellColor != CellColor.Empty && _cells[hieght - 1][i - 1].CellColor == CellColor.Empty)
+            if (i > 0 && _cells[_hieght - 1][i].CellColor != CellColor.Empty && _cells[_hieght - 1][i - 1].CellColor == CellColor.Empty)
             {
                 isLeftMovement = true;
                 int k = i - 1;
-                while(k >= 0 && _cells[hieght - 1][k].CellColor == CellColor.Empty)
+                while(k >= 0 && _cells[_hieght - 1][k].CellColor == CellColor.Empty)
                     k--;
 
-                for (int j = 0; j < hieght; j++)
+                for (int j = 0; j < _hieght; j++)
                 {
                     if (_cells[j][i].CellColor != CellColor.Empty && _cells[j][k+1].CellColor == CellColor.Empty)
                     {
@@ -280,12 +279,12 @@ public class GameField : MonoBehaviour
         bool isAddNewLines = false;
         _startTween = 0;
         _completeTween = 0;
-        for (int i = 0; i < width; i++)
+        for (int i = 0; i < _width; i++)
         {
-            if(i > 0 && _cells[hieght - 1][i].CellColor == CellColor.Empty && _cells[hieght - 1][i - 1].CellColor != CellColor.Empty)
+            if(i > 0 && _cells[_hieght - 1][i].CellColor == CellColor.Empty && _cells[_hieght - 1][i - 1].CellColor != CellColor.Empty)
             {
                 isAddNewLines = true;
-                for (int j = 0; j < hieght; j++)
+                for (int j = 0; j < _hieght; j++)
                 {
                     _cells[j][i].Appear(this, 0.5f);
                 }
@@ -299,12 +298,12 @@ public class GameField : MonoBehaviour
     {
         bool isLose = true;
 
-        for (int i = 0; i < hieght; i++)
+        for (int i = 0; i < _hieght; i++)
         {
             if (!isLose)
                 break;
             
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < _width; j++)
             {
                 int left = j - 1;
                 int up = i - 1;
@@ -318,14 +317,13 @@ public class GameField : MonoBehaviour
                     isLose = false;
                     break;
                 }
-
             }
         }
 
         if (isLose)
         {
             _canPop = false;
-            hUD.OpenLosePanel();
+            _hUD.OpenLosePanel();
         }
     }
 

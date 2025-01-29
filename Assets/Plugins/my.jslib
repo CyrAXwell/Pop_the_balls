@@ -4,6 +4,10 @@ mergeInto(LibraryManager.library, {
     window.alert("Hello, world!");
   },
 
+  YandexSDKIsEnabled: function () {
+    return false;
+  },
+
   ShowFullscreenAdv: function () {
     ysdk.adv.showFullscreenAdv({
         callbacks: {

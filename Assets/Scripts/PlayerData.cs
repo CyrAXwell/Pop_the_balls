@@ -6,8 +6,11 @@ public class PlayerData
 {
     [DllImport("__Internal")]
     private static extern void UpdateLeaderboardScore(int value);
+
+    private const bool Y_SDK_IS_ENABLED = YandexSDK.Y_SDK_IS_ENABLED;
     
     public event Action<int> ScoreChanged;
+
     private int _currentScore;
 
     public PlayerData()
@@ -20,7 +23,6 @@ public class PlayerData
         if (n > 0)
         {
             _currentScore += n;
-            //Debug.Log("ChangeScore " + _currentScore);
             ScoreChanged?.Invoke(_currentScore);
         }
         
@@ -28,9 +30,9 @@ public class PlayerData
         {
             PlayerPrefs.SetInt("Score", _currentScore);
             Save();
-            #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR && Y_SDK_IS_ENABLED
             UpdateLeaderboardScore(_currentScore);
-            #endif
+#endif
         }
             
     }

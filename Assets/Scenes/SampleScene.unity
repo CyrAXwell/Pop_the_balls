@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 4618624}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 4618624}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &4618624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,10 +390,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 90943987}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 90943987}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &90943987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934ce21b76e533c4fa960858a072dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 202590335}
+  _scoreDisplay: {fileID: 202590335}
 --- !u!1 &239542405
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934ce21b76e533c4fa960858a072dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 337693134}
+  _scoreDisplay: {fileID: 0}
 --- !u!114 &337693134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,10 +985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4905bd93432a93142b13c2c0b6a9d68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enButton: {fileID: 0}
-  ruButton: {fileID: 0}
-  enableColor: {r: 0, g: 0, b: 0, a: 0}
-  disableColor: {r: 0, g: 0, b: 0, a: 0}
+  _enButton: {fileID: 0}
+  _ruButton: {fileID: 0}
+  _enableColor: {r: 0, g: 0, b: 0, a: 0}
+  _disableColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &406497029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,8 +1152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df695371844f0f244ae8f102aa2c5f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 687e038349938bb45aefc49e36122635, type: 2}
-  sFXSource: {fileID: 821044365}
+  _audioMixer: {fileID: 24100000, guid: 687e038349938bb45aefc49e36122635, type: 2}
+  _sFXSource: {fileID: 821044365}
   PopSound: {fileID: 8300000, guid: faee4d601d846b748b18401e567ca8c3, type: 3}
 --- !u!4 &410180260
 Transform:
@@ -1608,8 +1608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566a0ebfa5ccc5244bad849abb4bd0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 493692909}
-  losePanelScore: {fileID: 1004679178}
+  _scoreDisplay: {fileID: 202590335}
+  _losePanelScore: {fileID: 337693134}
   countDuration: 1
 --- !u!114 &574149989
 MonoBehaviour:
@@ -1623,17 +1623,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a681bc06661e64e9e0227ba8d66ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsPanel: {fileID: 2066262615}
-  OnSoundButton: {fileID: 1213265066}
-  OffSoundButton: {fileID: 1617095377}
-  audioManager: {fileID: 410180259}
-  fadeTime: 0.5
-  transition: {fileID: 1197565531}
-  gameField: {fileID: 2019376206}
-  highScoreView: {fileID: 202590337}
-  losePanel: {fileID: 1802487084}
-  losePanelHighScore: {fileID: 337693133}
-  scoreView: {fileID: 574149988}
+  _settingsPanel: {fileID: 2066262615}
+  _OnSoundButton: {fileID: 1213265066}
+  _OffSoundButton: {fileID: 1617095377}
+  _audioManager: {fileID: 410180259}
+  _fadeTime: 0.5
+  _transition: {fileID: 1197565531}
+  _gameField: {fileID: 2019376206}
+  _highScoreView: {fileID: 202590337}
+  _losePanel: {fileID: 1802487084}
+  _losePanelHighScore: {fileID: 337693133}
+  _scoreView: {fileID: 574149988}
 --- !u!4 &574149990
 Transform:
   m_ObjectHideFlags: 0
@@ -1661,10 +1661,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4905bd93432a93142b13c2c0b6a9d68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enButton: {fileID: 0}
-  ruButton: {fileID: 0}
-  enableColor: {r: 0, g: 0, b: 0, a: 0}
-  disableColor: {r: 0, g: 0, b: 0, a: 0}
+  _enButton: {fileID: 0}
+  _ruButton: {fileID: 0}
+  _enableColor: {r: 0, g: 0, b: 0, a: 0}
+  _disableColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &636769396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,13 +1723,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9b87f3a0163634383e2fa47c65125d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgrounds:
+  _backgrounds:
   - {fileID: 664421422}
   - {fileID: 1358589432}
   - {fileID: 1982001505}
   - {fileID: 1667077454}
   - {fileID: 2145792679}
-  backgroundIcons:
+  _backgroundIcons:
   - {fileID: 4618621}
   - {fileID: 1484438708}
   - {fileID: 1820449958}
@@ -2030,10 +2030,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 664421425}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 664421425}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &664421425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934ce21b76e533c4fa960858a072dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 864443552}
+  _scoreDisplay: {fileID: 0}
 --- !u!114 &864443552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2357,7 +2357,7 @@ GameObject:
   - component: {fileID: 892056964}
   - component: {fileID: 892056963}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Background Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934ce21b76e533c4fa960858a072dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 944970496}
+  _scoreDisplay: {fileID: 0}
 --- !u!114 &944970496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2752,10 +2752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 948332488}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 948332488}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &948332488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3107,7 +3107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934ce21b76e533c4fa960858a072dcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 1004679178}
+  _scoreDisplay: {fileID: 0}
 --- !u!114 &1004679178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3460,7 +3460,7 @@ GameObject:
   - component: {fileID: 1118994709}
   - component: {fileID: 1118994710}
   m_Layer: 0
-  m_Name: BootsTrap
+  m_Name: Bootstrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3493,8 +3493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95d2766f8c8bfb43a4700ea544119ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 574149988}
-  gameField: {fileID: 2019376206}
+  _score: {fileID: 574149988}
+  _gameField: {fileID: 2019376206}
 --- !u!1 &1197565529
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,10 +4333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1358589434}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1358589434}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!1 &1387653343
 GameObject:
   m_ObjectHideFlags: 0
@@ -4387,10 +4387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1387653346}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1387653346}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &1387653346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4743,10 +4743,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1484438711}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1484438711}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &1484438711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5046,10 +5046,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1667077457}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1667077457}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &1667077457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5230,10 +5230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1820449961}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1820449961}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &1820449961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5699,10 +5699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e73a820c8bb4548b9b60e2c70b8eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 1982001508}
-  speed: 0.1
-  xDirection: 1
-  yDirection: 1
+  _image: {fileID: 1982001508}
+  _speed: 0.1
+  _xDirection: 1
+  y_Direction: 1
 --- !u!114 &1982001508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5826,13 +5826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31919f00abcddc4fbced8abed4e4439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 16
-  hieght: 9
-  cellPref: {fileID: 7977995662051385648, guid: ba671772b97890143b61885793497eec, type: 3}
-  spacing: 6
-  popInterval: 0.01
-  audioManager: {fileID: 410180259}
-  hUD: {fileID: 574149989}
+  _width: 16
+  _hieght: 9
+  _cellPrefab: {fileID: 7977995662051385648, guid: ba671772b97890143b61885793497eec, type: 3}
+  _spacing: 6
+  _audioManager: {fileID: 410180259}
+  _hUD: {fileID: 574149989}
 --- !u!1 &2066262615
 GameObject:
   m_ObjectHideFlags: 0

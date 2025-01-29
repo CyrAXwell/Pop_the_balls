@@ -6,93 +6,94 @@ public class HUD : MonoBehaviour
 {
     [DllImport("__Internal")]
     private static extern void ShowFullscreenAdv();
+
+    private const bool Y_SDK_IS_ENABLED = YandexSDK.Y_SDK_IS_ENABLED;
     
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject OnSoundButton;
-    [SerializeField] private GameObject OffSoundButton;
-    [SerializeField] private AudioManager audioManager;
-    [SerializeField] private float fadeTime = 1f;
-    [SerializeField] private CanvasGroup transition;
-    [SerializeField] private GameField gameField;
-    [SerializeField] private HighScoreView highScoreView;
-    [SerializeField] private CanvasGroup losePanel;
-    [SerializeField] private HighScoreView losePanelHighScore;
-    [SerializeField] private ScoreView scoreView;
+    [SerializeField] private GameObject _settingsPanel;
+    [SerializeField] private GameObject _OnSoundButton;
+    [SerializeField] private GameObject _OffSoundButton;
+    [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private float _fadeTime = 0.5f;
+    [SerializeField] private CanvasGroup _transition;
+    [SerializeField] private GameField _gameField;
+    [SerializeField] private HighScoreView _highScoreView;
+    [SerializeField] private CanvasGroup _losePanel;
+    [SerializeField] private HighScoreView _losePanelHighScore;
+    [SerializeField] private ScoreView _scoreView;
 
-
-    private CanvasGroup _canvasGroupSettingsPanel => settingsPanel.GetComponent<CanvasGroup>();
+    private CanvasGroup _canvasGroupSettingsPanel => _settingsPanel.GetComponent<CanvasGroup>();
 
     private void Awake()
     {
-        settingsPanel.SetActive(false);
-        losePanel.gameObject.SetActive(false);
+        _settingsPanel.SetActive(false);
+        _losePanel.gameObject.SetActive(false);
     }
 
     public void OpenSettingsPanel()
     {
-        settingsPanel.SetActive(true);
-        highScoreView.DisplayScore();
+        _settingsPanel.SetActive(true);
+        _highScoreView.DisplayScore();
         _canvasGroupSettingsPanel.alpha = 0;
-        _canvasGroupSettingsPanel.DOFade(1, fadeTime);
+        _canvasGroupSettingsPanel.DOFade(1, _fadeTime);
     }
 
     public void CloseSettingsPanel()
     {
-        _canvasGroupSettingsPanel.DOFade(0, fadeTime).OnComplete(() => settingsPanel.SetActive(false));
+        _canvasGroupSettingsPanel.DOFade(0, _fadeTime).OnComplete(() => _settingsPanel.SetActive(false));
     }
 
     public void OnSound()
     {
-        audioManager.UnMuteSFX();
-        OnSoundButton.SetActive(false);
-        OffSoundButton.SetActive(true);
+        _audioManager.UnMuteSFX();
+        _OnSoundButton.SetActive(false);
+        _OffSoundButton.SetActive(true);
     }
 
     public void OffSound()
     {
-        audioManager.MuteSFX();
-        OnSoundButton.SetActive(true);
-        OffSoundButton.SetActive(false);
+        _audioManager.MuteSFX();
+        _OnSoundButton.SetActive(true);
+        _OffSoundButton.SetActive(false);
     }
 
     public void ResetTransition()
     {
-        #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR && Y_SDK_IS_ENABLED
         ShowFullscreenAdv();
-        #endif
-        transition.gameObject.SetActive(true);
-        transition.alpha = 0;
-        transition.DOFade(1, fadeTime).OnComplete(()=>
+#endif
+        _transition.gameObject.SetActive(true);
+        _transition.alpha = 0;
+        _transition.DOFade(1, _fadeTime).OnComplete(()=>
         {
-            gameField.ResetField();
-            transition.DOFade(0, fadeTime).OnComplete(()=>
+            _gameField.ResetField();
+            _transition.DOFade(0, _fadeTime).OnComplete(()=>
             {
-                transition.gameObject.SetActive(false);
-                gameField.AppearBalls();
+                _transition.gameObject.SetActive(false);
+                _gameField.AppearBalls();
             });
         });
     }
 
     public void OpenLosePanel()
     {
-        losePanel.gameObject.SetActive(true);
-        losePanelHighScore.DisplayScore();
-        scoreView.DisplayScoreOnLosePanel();
-        losePanel.alpha = 0;
-        losePanel.DOFade(1, fadeTime);
+        _losePanel.gameObject.SetActive(true);
+        _losePanelHighScore.DisplayScore();
+        _scoreView.DisplayScoreOnLosePanel();
+        _losePanel.alpha = 0;
+        _losePanel.DOFade(1, _fadeTime);
     }
 
     public void OnContinueButton()
     {   
-        #if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR
         ShowFullscreenAdv();
-        #endif
-        losePanel.gameObject.SetActive(true);
-        gameField.ResetField();
-        losePanel.DOFade(0, fadeTime).OnComplete(()=>
+#endif
+        _losePanel.gameObject.SetActive(true);
+        _gameField.ResetField();
+        _losePanel.DOFade(0, _fadeTime).OnComplete(()=>
         {
-            losePanel.gameObject.SetActive(false);
-            gameField.AppearBalls();
+            _losePanel.gameObject.SetActive(false);
+            _gameField.AppearBalls();
         });
     }
 }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class BootsTrap : MonoBehaviour
 {
-    [SerializeField] private ScoreView score;
-    [SerializeField] private GameField gameField;
+    [SerializeField] private ScoreView _score;
+    [SerializeField] private GameField _gameField;
 
     private PlayerData _playerData;
 
@@ -19,16 +19,15 @@ public class BootsTrap : MonoBehaviour
     private void InitializeData()
     {
         _playerData = new PlayerData();
-        //_playerData.ClearData();
     }
 
     private void InitializeScore()
     {
-        score.Initialize(_playerData);
+        _score.Initialize(_playerData);
     }
 
     private void InitializeField()
     {
-        gameField.Initialize(_playerData);
+        _gameField.Initialize(_playerData);
     }
 }

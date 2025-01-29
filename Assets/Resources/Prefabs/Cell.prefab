@@ -88,16 +88,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee3b156c467cf640ba47de3fdcd30cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 80
-  background: {fileID: 6083862745528867600}
-  backgroundPref: {fileID: 5468037886771724082, guid: 2986eac9edbd6174ba1d65710668a65a, type: 3}
-  redBall: {fileID: 6502622771703197769, guid: 08c84331b1ea2954984ffb73ab18e9f0, type: 3}
-  blueBall: {fileID: 6502622771703197769, guid: 1e0a9edc52df700498435cd30e450127, type: 3}
-  greenBall: {fileID: 6502622771703197769, guid: 406c26e44880b9947b33c5b44beaf57d, type: 3}
-  yellowBall: {fileID: 6502622771703197769, guid: ed416058c4e2e334fb8fbe3a20aa0d06, type: 3}
-  purpleBall: {fileID: 6502622771703197769, guid: ba5394446111b8442a8fea8937beb324, type: 3}
-  redPopEffect: {fileID: 7983271690844042884, guid: 18a872a52c877884f8cf4c8c26c36d7a, type: 3}
-  bluePopEffect: {fileID: 7983271690844042884, guid: 41aee9fc9bfad4b4f840b911a3f74bec, type: 3}
-  greenPopEffect: {fileID: 7983271690844042884, guid: 05c1dbf1eee6934439bf2fa20fa52577, type: 3}
-  yellowPopEffect: {fileID: 7983271690844042884, guid: 4b7ba0bc3088a084f83cb8ddd9094cdf, type: 3}
-  purplePopEffect: {fileID: 7983271690844042884, guid: a4b99749222b43140a856a6cbce9feb1, type: 3}
+  _size: 80
+  _background: {fileID: 6083862745528867600}
+  _backgroundPref: {fileID: 5468037886771724082, guid: 2986eac9edbd6174ba1d65710668a65a, type: 3}
+  _redBall: {fileID: 6502622771703197769, guid: 08c84331b1ea2954984ffb73ab18e9f0, type: 3}
+  _blueBall: {fileID: 6502622771703197769, guid: 1e0a9edc52df700498435cd30e450127, type: 3}
+  _greenBall: {fileID: 6502622771703197769, guid: 406c26e44880b9947b33c5b44beaf57d, type: 3}
+  _yellowBall: {fileID: 6502622771703197769, guid: ed416058c4e2e334fb8fbe3a20aa0d06, type: 3}
+  _purpleBall: {fileID: 6502622771703197769, guid: ba5394446111b8442a8fea8937beb324, type: 3}
+  _redPopEffect: {fileID: 7983271690844042884, guid: 18a872a52c877884f8cf4c8c26c36d7a, type: 3}
+  _bluePopEffect: {fileID: 7983271690844042884, guid: 41aee9fc9bfad4b4f840b911a3f74bec, type: 3}
+  _greenPopEffect: {fileID: 7983271690844042884, guid: 05c1dbf1eee6934439bf2fa20fa52577, type: 3}
+  _yellowPopEffect: {fileID: 7983271690844042884, guid: 4b7ba0bc3088a084f83cb8ddd9094cdf, type: 3}
+  _purplePopEffect: {fileID: 7983271690844042884, guid: a4b99749222b43140a856a6cbce9feb1, type: 3}
